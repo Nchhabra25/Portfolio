@@ -1,0 +1,185 @@
+import React from 'react'
+import styled from 'styled-components';
+import { fadeInLeftVariant, fadeInRightVariant } from './Utils';
+import { motion } from 'framer-motion';
+const Description = styled.div`
+    width: 100%;
+    font-size: 15px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.text1};
+    margin-bottom: 10px;
+    @media only screen and (max-width: 768px){
+        font-size: 12px;
+    }
+`
+const Span = styled.span`
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+`
+const CardBody = styled.div`
+    border-radius: 10px;
+    box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
+    padding: 12px 16px;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease-in-out;
+    width: 500px;
+    &:hover{
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+        transform: translateY(-5px);
+    }
+    @media only screen and (max-width: 1100px){
+        padding: 10px;
+        gap: 8px;
+        width: 300px;
+    }
+    @media only screen and (max-width: 800px){
+        padding: 10px;
+        gap: 8px;
+        width: 250px;
+    }
+    @media screen and (max-width: 710px) {
+    width: 500px;
+    }
+    @media screen and (max-width: 600px) {
+    width: 300px;
+    }
+    @media screen and (max-width: 400px) {
+    width: 200px;
+    }
+    &:hover ${Span}{
+        overflow: visible;
+        -webkit-line-clamp: unset;
+
+    }
+    border: 0.1px solid #854CE6;
+`
+
+const TopBody = styled(motion.div)`
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+`;
+
+const Img = styled.img`
+    height: 50px;
+    background-color: #000;
+    border-radius: 10px;
+    margin-top: 4px;
+    display: inline;
+    width: 30px;
+    @media only screen and (max-width: 768px){
+        height: 40px;
+    }
+`
+
+const Body = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+`
+
+
+const Name = styled.div`
+    font-size: 21px;
+    font-weight: 600;
+    display: inline;
+    color: ${({ theme }) => theme.text1 };
+    @media only screen and (max-width: 768px){
+        font-size: 14px;
+    }
+`
+
+const Degree = styled.div`
+    font-size: 14px;
+    font-weight: 500;
+    color: ${({ theme }) => theme.text1};
+    @media only screen and (max-width: 768px){
+        font-size: 12px;
+    }
+`
+
+const Date = styled.div`
+    font-size: 14px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.text2};
+    @media only screen and (max-width: 768px){
+        font-size: 10px;
+    }
+`
+
+const Grade = styled.div`
+    font-size: 18px;
+    font-weight: 500;
+    color: ${({ theme }) => theme.text1 };
+    @media only screen and (max-width: 768px){
+        font-size: 12px;
+    }
+`
+const Skills = styled.div`
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    margin-top: -10px;
+    color: ${({ theme }) => theme.text1 };
+`
+
+const ItemWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+`
+
+const Skill = styled.div`
+    font-size: 15px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.text1};
+    @media only screen and (max-width: 768px){
+        font-size: 12px;
+    }
+`
+
+
+const Card = (props) => {
+    const {data}=props;
+    console.log(data.img)
+  return (
+    <CardBody>
+      <TopBody variants={data?.skills?fadeInRightVariant:fadeInLeftVariant} initial="hidden" whileInView="visible">
+      
+      <Body>
+      {(data.institution)?<Name>{data.institution}</Name>:<></>}
+      
+      {(data.degree)?<Degree>{data.degree}</Degree>:<></>}
+      {(data.date)?<Date>{data.date}</Date>:<></>}
+      </Body>
+      {(data.subheading)?<Grade>{data.subheading}</Grade>:<></>}
+      {(data.desc)?<Description><Span>{data.desc}</Span></Description>:<></>}
+      {data.skills &&
+            <>
+                <br />
+                <Skills>
+                    <b>Skills:</b>
+                    <ItemWrapper>
+                        {data?.skills?.map((skill, index) => (
+                            <Skill>• {skill}</Skill>
+                        ))}
+                    </ItemWrapper>
+                </Skills>
+            </>
+       }
+      </TopBody>
+    </CardBody>
+  )
+}
+
+export default Card
