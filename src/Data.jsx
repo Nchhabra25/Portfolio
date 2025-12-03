@@ -9,7 +9,7 @@ export const Info = {
       "Frontend Developer",
     ],
     description:
-      "Hello! I'm Niharika. I'm a frontend developer and a student at Delhi University. I'm currently on the road to learning Full stack Development. I'm dedicated to creating websites that are both functional and enchanting, offering users seamless interactions and engagement. When I'm not coding, you'll find me immersed in books, exploring new literary worlds, or savoring delicious food. ",
+      "Hello! I'm Niharika. I'm a software developer and a student at Guru Gobind Singh Indraprastha University. I've done my bachelors from Delhi University. I'm a web developer who is dedicated to creating websites that are both functional and enchanting, offering users seamless interactions and engagement. When I'm not coding, you'll find me immersed in books, exploring new literary worlds, or savoring delicious food. ",
     resume:"https://drive.google.com/file/d/1yzEMkdObY9iV2vrTvRpmA4lF7NmZnymc/view?usp=drive_link",
   };
   export const links=[
